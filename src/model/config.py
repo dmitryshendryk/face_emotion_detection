@@ -15,6 +15,10 @@ class Config(object):
 
     patience = 50
 
+    frame_window = 10
+
+    emotion_offsets = (20, 40)
+
     base_path = '../trained_models/'
 
     def display(self):
