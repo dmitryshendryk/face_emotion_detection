@@ -10,6 +10,8 @@ from keras.callbacks import CSVLogger, ModelCheckpoint, EarlyStopping
 from keras.callbacks import ReduceLROnPlateau
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import load_model
+from keras import optimizers
+
 
 ROOT_DIR = os.path.abspath('../')
 sys.path.append(ROOT_DIR)
@@ -17,7 +19,7 @@ sys.path.append(ROOT_DIR)
 from src.utils.dataset import DatasetManager, split_data, get_labels
 from src.utils.visualizer import pretty_imshow, make_mosaic
 from src.utils.preprocessing import preprocess_input
-from src.model.net import neural_net
+from src.model.net import neural_net, neural_net_v2
 from src.model.config import Config
 
 from src.utils.detection import detect_faces
@@ -47,8 +49,9 @@ def train(config):
         horizontal_flip=True)
 
 
-    model = neural_net(config.input_shape, config.num_classes)
-    model.compile(optimizer='adam', loss='categorical_crossentropy',
+    model = neural_net_v2(config.input_shape, config.num_classes)
+    sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+    model.compile(optimizer=sgd, loss='categorical_crossentropy',
             metrics=['accuracy'])
     
     model.summary()
@@ -60,7 +63,7 @@ def train(config):
     log_files = config.base_path + dataset_name + '_emotion_training.log'
     csv_logger = CSVLogger(log_files, append=False)
     early_stop = EarlyStopping('val_loss', patience=config.patience)
-    reduce_lr = ReduceLROnPlateau('var_loss', factor=0.1, verbose=1, patience = int(config.patience/4))
+    reduce_lr = ReduceLROnPlateau('var_loss', factor=0.1, verbose=0, min_delta=0.0001, min_lr=0, patience = int(config.patience/4))
     
     trained_models_path = config.base_path + dataset_name + '_neural_model'
     model_names = trained_models_path + '.{epoch:02d}-{val_acc:.2f}.hdf5'
