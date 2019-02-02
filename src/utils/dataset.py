@@ -39,6 +39,11 @@ class DatasetManager(object):
         faces = np.expand_dims(faces, -1)
         emotions = pd.get_dummies(emotion_dataset['emotion']).as_matrix()
         return faces, emotions
+
+
+def get_labels():
+    return {0: 'angry', 1: 'disgust', 2: 'fear', 3: 'happy',
+                4: 'sad', 5: 'surprise', 6: 'neutral'}
     
 def split_data(x, y, validation_split=.2):
     num_samples = len(x)

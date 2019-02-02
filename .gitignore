@@ -3,3 +3,5 @@
 dataset/
 papers/
 trained_models/
+src/model/__pycache__
+src/utils/__pycache__
