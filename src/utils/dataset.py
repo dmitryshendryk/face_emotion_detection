@@ -25,7 +25,12 @@ class DatasetManager(object):
     
 
     def _load_emotions_dataset(self):
-        emotion_dataset = pd.read_csv(self.dataset_path)
+        try:
+            emotion_dataset = pd.read_csv(self.dataset_path)
+        except FileNotFoundError:
+            print("Can't find dataset. Please download it and put under directory ./<project_folder>/dataset/fer2013 ")
+            exit(0)
+        
         # emotion_dataset = emotion_dataset.loc[emotion_dataset['Usage']==data_split]
         pixels = emotion_dataset['pixels'].tolist()
         faces = []

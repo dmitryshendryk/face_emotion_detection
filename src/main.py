@@ -82,11 +82,14 @@ def train(config):
                             epochs=config.num_epochs, verbose=1, callbacks=callbacks,
                             validation_data=val_data)
 def detect(config):
+    try:
+        cascade_model_path = os.path.join(ROOT_DIR,'src/model/haarcascade_frontalface_default.xml')
+        emotion_model_path = os.path.join(ROOT_DIR,'trained_models/fer2013_neural_model.85-0.64.hdf5')
+    except FileNotFoundError:
+        print("Error: Missing detection model files")
+        exit(0)
 
-    cascade_model_path = os.path.join(ROOT_DIR,'src/model/haarcascade_frontalface_default.xml')
-    emotion_model_path = os.path.join(ROOT_DIR,'trained_models/fer2013_neural_model.85-0.64.hdf5')
     emotion_labels = get_labels()
-
 
     face_detection = load_detection_model(cascade_model_path)
     emotion_classifier = load_model(emotion_model_path)
