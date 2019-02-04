@@ -63,7 +63,7 @@ def train(config):
     log_files = config.base_path + dataset_name + '_emotion_training.log'
     csv_logger = CSVLogger(log_files, append=False)
     early_stop = EarlyStopping('val_loss', patience=config.patience)
-    reduce_lr = ReduceLROnPlateau('var_loss', factor=0.1, verbose=0, min_delta=0.0001, min_lr=0, patience = int(config.patience/4))
+    reduce_lr = ReduceLROnPlateau('val_loss', factor=0.1, verbose=1, min_delta=0.0001, min_lr=0, patience = int(config.patience/4))
     
     trained_models_path = config.base_path + dataset_name + '_neural_model'
     model_names = trained_models_path + '.{epoch:02d}-{val_acc:.2f}.hdf5'
@@ -84,7 +84,7 @@ def train(config):
 def detect(config):
 
     cascade_model_path = os.path.join(ROOT_DIR,'src/model/haarcascade_frontalface_default.xml')
-    emotion_model_path = os.path.join(ROOT_DIR,'trained_models/fer2013_neural_model.184-0.63.hdf5')
+    emotion_model_path = os.path.join(ROOT_DIR,'trained_models/fer2013_neural_model.85-0.64.hdf5')
     emotion_labels = get_labels()
 
 
