@@ -26,3 +26,11 @@ conda or virtualenv with all installed libraries</p>
 - Run command to train:
 `python main.py train`
 
+
+### Dataset display ###
+
+- To display dataset first need to download it, refer to **Train** topic
+- Run display command:
+`python main.py display_data`
+
+

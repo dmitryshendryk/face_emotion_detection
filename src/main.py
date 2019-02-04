@@ -19,7 +19,7 @@ sys.path.append(ROOT_DIR)
 from src.utils.dataset import DatasetManager, split_data, get_labels
 from src.utils.visualizer import pretty_imshow, make_mosaic
 from src.utils.preprocessing import preprocess_input
-from src.model.net import neural_net, neural_net_v2
+from src.model.net import neural_net_v2
 from src.model.config import Config
 
 from src.utils.detection import detect_faces
