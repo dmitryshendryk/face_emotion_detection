@@ -1,8 +1,8 @@
-#Face emotion detection#
+# Face emotion detection #
 
 <p>The project to detect people's emotions using camera</p>
 
-##Get Started##
+## Get Started ##
 
 <p>Project requires tensorflow environment, prefered to use 
 conda or virtualenv with all installed libraries</p>
@@ -12,12 +12,12 @@ conda or virtualenv with all installed libraries</p>
 - keras 2.2.2
 - scikit-image 0.14.0
 
-###Detection###
+### Detection ###
 
 <p>To start object detection run command:</p>
 `python main.py detect`
 
-###Train###
+### Train ###
 
 - First need to download dataset from [here](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data)
 - Move the downloaded file to the datasets directory in the root project.
