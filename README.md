@@ -14,7 +14,7 @@ conda or virtualenv with all installed libraries</p>
 
 ###Detection###
 
-<p>To start object detection run command:</p>
+- To start object detection run command:
 `python main.py detect`
 
 ###Train###
