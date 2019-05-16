@@ -17,20 +17,4 @@ conda or virtualenv with all installed libraries</p>
 - To start object detection run command:
 `python main.py detect`
 
-### Train ###
-
-- First need to download dataset from [here](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data)
-- Move the downloaded file to the datasets directory in the root project.
-- Untar the file:
-`tar -xzf fer2013.tar`
-- Run command to train:
-`python main.py train`
-
-
-### Dataset display ###
-
-- To display dataset first need to download it, refer to **Train** topic
-- Run display command:
-`python main.py display_data`
-
 
